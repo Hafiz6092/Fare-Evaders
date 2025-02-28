@@ -5,36 +5,24 @@ const protobuf = require('gtfs-realtime-bindings');
 
 const router = express.Router();
 const API_KEY = process.env.MTA_API_KEY;
+const SUBWAY_ALERTS_URL = "https://api-endpoint.mta.info/Dataservice/mtagtfsfeeds/camsys%2Fsubway-alerts";
 
-// **MTA Service Alerts Feed**
-const SERVICE_ALERTS_FEED = "https://api-endpoint.mta.info/Dataservice/mtagtfsfeeds/camsys%2Fall-alerts";
-
-// **Fetch Service Alerts**
-const fetchServiceAlerts = async () => {
+// **Fetch Subway Service Alerts**
+router.get('/subway-alerts', async (req, res) => {
     try {
-        console.log(`Fetching service alerts...`);
-        const response = await axios.get(SERVICE_ALERTS_FEED, {
+        const response = await axios.get(SUBWAY_ALERTS_URL, {
             headers: { "x-api-key": API_KEY },
-            responseType: 'arraybuffer'
+            responseType: 'arraybuffer',
         });
 
-        if (response.status !== 200) {
-            console.error(`API Error: ${response.status} ${response.statusText}`);
-            return { error: "Failed to fetch service alerts" };
-        }
-
         const feed = protobuf.transit_realtime.FeedMessage.decode(new Uint8Array(response.data));
-        return feed.toJSON();
-    } catch (error) {
-        console.error(`Error fetching service alerts:`, error.message);
-        return { error: "Failed to fetch service alerts" };
-    }
-};
+        const jsonData = feed.toJSON();
 
-// **GET /subway/alerts → Fetch subway service alerts**
-router.get('/subway/alerts', async (req, res) => {
-    const data = await fetchServiceAlerts();
-    res.json(data);
+        res.json(jsonData);
+    } catch (error) {
+        console.error("Error fetching subway alerts:", error.message);
+        res.status(500).json({ error: "Failed to fetch subway alerts" });
+    }
 });
 
 module.exports = router;
