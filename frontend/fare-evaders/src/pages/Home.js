@@ -4,7 +4,7 @@ function Home() {
   return (
     <div style={{ padding: "20px" }}>
       <h1>Welcome to MTA Subway Data Tracker</h1>
-      <p>Click on "Subway Data" to view real-time train information.</p>
+      <p>Click on "Subway Alerts" to view real-time train information.</p>
     </div>
   );
 }
