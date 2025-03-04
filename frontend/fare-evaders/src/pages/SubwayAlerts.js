@@ -49,27 +49,37 @@ const SubwayAlerts = () => {
     const filteredAlerts = selectedLine === "All" ? alerts : alerts.filter(alert => alert.routeId === selectedLine);
 
     return (
-        <div>
-            <h1>Service Alerts</h1>
+        <div class="">
+            <h1 class="text-2xl flex p-4 font-serif bg-gray-200">Service Alerts</h1>
+            <div class="text-xl flex p-2 mx-auto font-sans font-serif bg-gray-300 pb-2">
+                <label class="bg-gray-400 rounded-md box-border size-18 border-4 p-4 ">Filter by Subway Line: </label>
+                <select class="bg-gray-400 rounded-md box-border size-18 border-4 p-4 " value={selectedLine} onChange={(e) => setSelectedLine(e.target.value)}>
+                    {subwayLines.map((line, index) => (
+                        <option key={index} value={line}>{line}</option>
+                    ))}
+                </select> 
+            </div>
 
-            <label>Filter by Subway Line: </label>
-            <select value={selectedLine} onChange={(e) => setSelectedLine(e.target.value)}>
-                {subwayLines.map((line, index) => (
-                    <option key={index} value={line}>{line}</option>
-                ))}
-            </select>
+            
 
             {loading && <p>Loading alerts...</p>}
             {error && <p>{error}</p>}
 
-            <ul>
+            <ul className="pt-4 pr-2 pl-2 text-white bg-gray-500 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mx-auto">
                 {filteredAlerts.map((alert, index) => (
-                    <li key={index}>
-                        <strong dangerouslySetInnerHTML={{ __html: alert.headerText }}></strong>
-                        <p dangerouslySetInnerHTML={{ __html: alert.descriptionText }}></p>
+                    <li
+                    key={index}
+                    className="bg-gray-600 rounded-md box-border border-2 p-4 w-full flex flex-col"
+                    >
+                    <strong dangerouslySetInnerHTML={{ __html: alert.headerText }}></strong>
+                    <p dangerouslySetInnerHTML={{ __html: alert.descriptionText }}></p>
                     </li>
                 ))}
             </ul>
+
+
+
+
         </div>
     );
 };
