@@ -3,10 +3,8 @@ import axios from "axios";
 
 const SubwayAlerts = () => {
     const [alerts, setAlerts] = useState([]);
-    const [filteredAlerts, setFilteredAlerts] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
-    const [subwayLines, setSubwayLines] = useState([]);
     const [selectedLine, setSelectedLine] = useState("All");
 
     useEffect(() => {
@@ -16,23 +14,23 @@ const SubwayAlerts = () => {
                     headers: { "x-api-key": "YOUR_MTA_API_KEY" },
                 });
 
-                const data = response.data.entity || [];
-                setAlerts(data);
+                // Extract only relevant alert data
+                const formattedAlerts = response.data.entity.map((alert) => {
+                    const routeId = alert.alert.informedEntity.find(entity => entity.routeId)?.routeId || "Unknown";
 
-                // Extract unique subway names
-                const lines = new Set();
-                data.forEach(alert => {
-                    if (alert.alert.informedEntity) {
-                        alert.alert.informedEntity.forEach(entity => {
-                            if (entity.routeId) {
-                                lines.add(entity.routeId);
-                            }
-                        });
+                    // Extract only the `en-html` version of the messages
+                    const headerText = alert.alert.headerText?.translation.find(t => t.language === "en-html")?.text || "No header text available";
+                    let descriptionText = alert.alert.descriptionText?.translation.find(t => t.language === "en-html")?.text;
+
+                    // If description is missing, replace with MTA Bus Time link
+                    if (!descriptionText) {
+                        descriptionText = `<a href="https://bustime.mta.info" target="_blank" rel="noopener noreferrer">More Info</a>`;
                     }
+
+                    return { routeId, headerText, descriptionText };
                 });
 
-                setSubwayLines(["All", ...Array.from(lines)]);
-                setFilteredAlerts(data);
+                setAlerts(formattedAlerts);
                 setLoading(false);
             } catch (err) {
                 console.error("Error fetching subway alerts:", err);
@@ -44,45 +42,31 @@ const SubwayAlerts = () => {
         fetchAlerts();
     }, []);
 
-    // Filter alerts when user selects a subway line
-    useEffect(() => {
-        if (selectedLine === "All") {
-            setFilteredAlerts(alerts);
-        } else {
-            setFilteredAlerts(
-                alerts.filter(alert =>
-                    alert.alert.informedEntity?.some(entity => entity.routeId === selectedLine)
-                )
-            );
-        }
-    }, [selectedLine, alerts]);
+    // Get unique subway lines from the fetched alerts
+    const subwayLines = ["All", ...new Set(alerts.map(alert => alert.routeId))];
+
+    // Filter alerts based on selected subway line
+    const filteredAlerts = selectedLine === "All" ? alerts : alerts.filter(alert => alert.routeId === selectedLine);
 
     return (
         <div>
             <h1>Service Alerts</h1>
-            {loading && <p>Loading alerts...</p>}
-            {error && <p>{error}</p>}
 
-            {/* Dropdown for selecting subway line */}
-            <label htmlFor="subwayFilter">Filter by Subway Line: </label>
-            <select
-                id="subwayFilter"
-                value={selectedLine}
-                onChange={(e) => setSelectedLine(e.target.value)}
-            >
+            <label>Filter by Subway Line: </label>
+            <select value={selectedLine} onChange={(e) => setSelectedLine(e.target.value)}>
                 {subwayLines.map((line, index) => (
-                    <option key={index} value={line}>
-                        {line}
-                    </option>
+                    <option key={index} value={line}>{line}</option>
                 ))}
             </select>
 
-            {/* Display Filtered Alerts */}
+            {loading && <p>Loading alerts...</p>}
+            {error && <p>{error}</p>}
+
             <ul>
                 {filteredAlerts.map((alert, index) => (
                     <li key={index}>
-                        <strong>{alert.alert.headerText?.translation[0]?.text}</strong>
-                        <p>{alert.alert.descriptionText?.translation[0]?.text}</p>
+                        <strong dangerouslySetInnerHTML={{ __html: alert.headerText }}></strong>
+                        <p dangerouslySetInnerHTML={{ __html: alert.descriptionText }}></p>
                     </li>
                 ))}
             </ul>
