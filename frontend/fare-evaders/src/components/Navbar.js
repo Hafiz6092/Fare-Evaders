@@ -3,12 +3,10 @@ import { Link } from "react-router-dom";
 
 function Navbar() {
   return (
-    <nav style={{ padding: "10px", backgroundColor: "#333", color: "white" }}>
-      <h2>MTA Subway Data</h2>
-      <Link to="/" style={{ marginRight: "20px", color: "white" }}>Home</Link>
-      {/* <Link to="/subway" style={{ marginRight: "20px", color: "white" }}>Subway Data</Link> */}
-      <Link to="/alerts" style={{ marginRight: "20px", color: "white" }}>Alerts</Link>
-      {/* <Link to="/nqrw" style={{ color: "white" }}>NQRW Data</Link> Added NQRW link */}
+    <nav className="bg-gray-900 text-white p-4 flex gap-4">
+      <Link to="/" className="hover:text-gray-300">Home</Link>
+      <Link to="/alerts" className="hover:text-gray-300">Subway Alerts</Link>
+      <Link to="/map" className="hover:text-gray-300">Subway Map</Link>
     </nav>
   );
 }
