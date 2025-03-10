@@ -50,10 +50,10 @@ const SubwayAlerts = () => {
 
     return (
         <div class="">
-            <h1 class="text-2xl flex p-4 font-serif bg-gray-700 text-white">Service Alerts</h1>
-            <div class="text-xl flex p-2 mx-auto font-sans font-serif bg-gray-800 pb-2">
-                <label class="bg-zinc-800 text-white rounded-md box-border size-18 border-4 p-4 ">Filter by Subway Line: </label>
-                <select class="bg-zinc-800 text-white rounded-md box-border size-18 border-4 p-4 " value={selectedLine} onChange={(e) => setSelectedLine(e.target.value)}>
+            <h1 class="text-2xl p-4 text-center font-serif bg-gray-700 text-white">Service Alerts</h1>
+            <div class="text-xl p-2 mx-auto font-sans font-serif bg-gray-800 pb-2">
+                <label class="bg-zinc-800 text-white rounded-md border-double size-18 border-4 p-2 mx-2">Filter by Subway Line: </label>
+                <select class="bg-zinc-800 text-white rounded-md border-double size-18 border-4 p-2" value={selectedLine} onChange={(e) => setSelectedLine(e.target.value)}>
                     {subwayLines.map((line, index) => (
                         <option key={index} value={line}>{line}</option>
                     ))}
@@ -67,7 +67,7 @@ const SubwayAlerts = () => {
                 {filteredAlerts.map((alert, index) => (
                     <li
                     key={index}
-                    className="bg-gray-900 rounded-md box-border border-2 p-4 w-full flex flex-col font-serif"
+                    className="transition delay-150 duration-300 ease-in-out hover:-translate-y-1 hover:bg-stone-300 hover:text-black focus:outline-4 shadow-xl shadow-indigo-500/50 outline-dotted bg-gray-950 rounded-md box-border border-2 p-4 w-full flex flex-col font-serif"
                     >
                     <strong dangerouslySetInnerHTML={{ __html: alert.headerText }}></strong>
                     <p dangerouslySetInnerHTML={{ __html: alert.descriptionText }}></p>
