@@ -50,10 +50,10 @@ const SubwayAlerts = () => {
 
     return (
         <div class="">
-            <h1 class="text-2xl p-4 text-center font-serif bg-gray-700 text-white">Service Alerts</h1>
-            <div class="text-xl p-2 mx-auto font-sans font-serif bg-gray-800 pb-2">
-                <label class="bg-zinc-800 text-white rounded-md border-double size-18 border-4 p-2 mx-2">Filter by Subway Line: </label>
-                <select class="bg-zinc-800 text-white rounded-md border-double size-18 border-4 p-2" value={selectedLine} onChange={(e) => setSelectedLine(e.target.value)}>
+            <h1 class="text-3xl p-4 text-center font-serif bg-gray-950 text-white">Service Alerts</h1>
+            <div class="text-xl p-2 mx-auto font-sans font-serif bg-gray-950 pb-2">
+                <label class="shadow-xl shadow-indigo-500/50 outline-dotted bg-zinc-950 text-white rounded-md border-double size-18 border-4 p-2 mx-2">Filter by Subway Line: </label>
+                <select class="shadow-xl shadow-indigo-500/50 outline-dotted bg-zinc-950 text-white rounded-md border-double size-18 border-4 p-2 mx-2" value={selectedLine} onChange={(e) => setSelectedLine(e.target.value)}>
                     {subwayLines.map((line, index) => (
                         <option key={index} value={line}>{line}</option>
                     ))}
