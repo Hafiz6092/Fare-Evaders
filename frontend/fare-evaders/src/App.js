@@ -4,6 +4,7 @@ import Home from "./pages/Home";
 import SubwayAlerts from "./pages/SubwayAlerts";
 import MapPage from "./pages/MapPage";
 import InfoPage from "./pages/InfoPage";
+import Bar from "./pages/Bar";
 
 function App() {
     return (
@@ -24,6 +25,7 @@ function AppContent() {
                 <Route path="/" element={<Home />} />
                 <Route path="/alerts" element={<SubwayAlerts />} />
                 <Route path="/map" element={<MapPage />} />
+                <Route path="/bar_graph" element={<Bar />} />
                 <Route path="/info" element={<InfoPage />} />
             </Routes>
         </>
