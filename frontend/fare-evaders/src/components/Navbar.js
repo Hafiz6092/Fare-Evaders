@@ -17,6 +17,10 @@ function Navbar() {
         <Link to="/map" className="transition delay-150 duration-300 ease-in-out hover:-translate-y-1 hover:bg-stone-300 hover:text-blue-800 focus:outline-4 shadow-xl shadow-indigo-500/50 outline-dotted border-double p-2 outline-offset-2 rounded-xl border-4 border-gray-300">
           Subway Map
         </Link>
+        <Link to="/bar_graph" className="transition delay-150 duration-300 ease-in-out hover:-translate-y-1 hover:bg-stone-300 hover:text-blue-800 focus:outline-4 shadow-xl shadow-indigo-500/50 outline-dotted border-double p-2 outline-offset-2 rounded-xl border-4 border-gray-300">
+          BarGraph
+        </Link>
+
       </div>
 
       {/* Right side: MTA Help Link */}
