@@ -111,7 +111,10 @@ const BarGraph = () => {
 
     return (
         <div style={{ width: "100%", height: "650px", textAlign: "center", color: "#fff" }}>
-            <h2 style={{ color: "#fff" }}>
+            <h1 className="text-white font-serif text-3xl text-center p-2">
+                {selectedDataType === "arrests" ? "Arrest BarGraph" : "Summonses BarGraph"}
+            </h1>
+            <h2 style={{ color: "#fff" }} className="text-white font-serif text-xl text-center p-2">
                 {selectedDataType.charAt(0).toUpperCase() + selectedDataType.slice(1)} per Year ({selectedQuarter})
             </h2>
 
@@ -146,68 +149,76 @@ const BarGraph = () => {
 
             {/* Bar Chart */}
             <div style={{ height: 500 }}>
-                <ResponsiveBar
-                    data={quarterlyData[selectedQuarter][selectedDataType]}
-                    keys={["Manhattan", "Brooklyn", "Bronx/Queens", "Other"]}
-                    indexBy="year"
-                    margin={{ top: 50, right: 130, bottom: 50, left: 60 }}
-                    padding={0.3}
-                    colors={{ scheme: "nivo" }}
-                    borderColor={{ from: "color", modifiers: [["darker", 1.6]] }}
-                    axisBottom={{
-                        tickSize: 5,
-                        tickPadding: 5,
-                        tickRotation: -45,
-                        legend: "Year",
-                        legendPosition: "middle",
-                        legendOffset: 40,
-                        tickTextColor: "#fff" // white tick labels
-                    }}
-                    axisLeft={{
-                        tickSize: 5,
-                        tickPadding: 5,
-                        tickRotation: 0,
-                        legend: "Number",
-                        legendPosition: "middle",
-                        legendOffset: -50,
-                        tickTextColor: "#fff" // white tick labels
-                    }}
-                    labelSkipWidth={12}
-                    labelSkipHeight={12}
-                    labelTextColor="#fff" // white bar labels
-                    legends={[
-                        {
-                            dataFrom: "keys",
-                            anchor: "right",
-                            direction: "column",
-                            justify: false,
-                            translateX: 120,
-                            itemWidth: 100,
-                            itemHeight: 20,
-                            itemsSpacing: 2,
-                            symbolSize: 20,
-                            // Although the legend text color can be set via theme,
-                            // you could also use this if needed:
-                            text: { fill: "#fff" }
-                        }
-                    ]}
-                    theme={{
-                        axis: {
-                            ticks: {
-                                text: { fill: "#fff" }
-                            },
-                            legend: {
-                                text: { fill: "#fff" }
-                            }
-                        },
-                        legends: {
+            <ResponsiveBar
+                data={quarterlyData[selectedQuarter][selectedDataType]}
+                keys={["Manhattan", "Brooklyn", "Bronx/Queens", "Other"]}
+                indexBy="year"
+                margin={{ top: 50, right: 130, bottom: 50, left: 60 }}
+                padding={0.3}
+                colors={{ scheme: "nivo" }}
+                borderColor={{ from: "color", modifiers: [["darker", 1.6]] }}
+                axisBottom={{
+                    tickSize: 5,
+                    tickPadding: 5,
+                    tickRotation: -45,
+                    legend: "Year",
+                    legendPosition: "middle",
+                    legendOffset: 40,
+                    tickTextColor: "#fff"
+                }}
+                axisLeft={{
+                    tickSize: 5,
+                    tickPadding: 5,
+                    tickRotation: 0,
+                    legend: "Number",
+                    legendPosition: "middle",
+                    legendOffset: -50,
+                    tickTextColor: "#fff"
+                }}
+                labelSkipWidth={12}
+                labelSkipHeight={12}
+                labelTextColor="#fff"
+                legends={[
+                    {
+                        dataFrom: "keys",
+                        anchor: "right",
+                        direction: "column",
+                        justify: false,
+                        translateX: 120,
+                        itemWidth: 100,
+                        itemHeight: 20,
+                        itemsSpacing: 2,
+                        symbolSize: 20,
+                        text: { fill: "#fff" }
+                    }
+                ]}
+                theme={{
+                    axis: {
+                        ticks: {
                             text: { fill: "#fff" }
                         },
-                        labels: {
+                        legend: {
                             text: { fill: "#fff" }
                         }
-                    }}
-                />
+                    },
+                    legends: {
+                        text: { fill: "#fff" }
+                    },
+                    labels: {
+                        text: { fill: "#fff" }
+                    },
+                    // Add tooltip styling here
+                    tooltip: {
+                        container: {
+                            background: "#fff",  // white tooltip background
+                            color: "#000",       // black text
+                            borderRadius: "4px",
+                            boxShadow: "0 3px 6px rgba(0, 0, 0, 0.15)",
+                            padding: "8px"
+                        }
+                    }
+                }}
+            />
             </div>
         </div>
     );
