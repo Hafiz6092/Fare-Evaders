@@ -20,7 +20,8 @@ function Home() {
                     <div className="buttons">
                         <button onClick={() => navigate('/alerts')}>Subway Alerts</button>
                         <button onClick={() => navigate('/map')}>Map</button>
-                        <button onClick={() => navigate('/info')}>MTA Help</button> {/* Updated button */}
+                        <button onClick={() => navigate('/bar_graph')}>Bar Graphs</button>
+                        <button onClick={() => navigate('/info')}>MTA Help</button>
                     </div>
                 </div>
             </div>
