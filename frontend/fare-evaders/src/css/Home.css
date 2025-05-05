@@ -1,99 +1,222 @@
+:root {
+    --text-primary: #ffffff;
+    --text-secondary: #cccccc;
+    --accent-color: #0039a6;
+    --accent-dark: #002d7a;
+    --bg-dark: #111111;
+    --button-border: #ffffff;
+    --animation-curve: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
 .home {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #111111;
-    color: #ffffff;
     min-height: 100vh;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+    position: relative;
+    color: var(--text-primary);
+    background-image: url('../assets/Background.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: var(--bg-dark);
+    image-rendering: -webkit-optimize-contrast;
 }
 
-.left-half {
-    flex: 1;
+.main-content,
+.additional-resources {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeIn 0.8s var(--animation-curve) forwards;
+}
+
+.main-content { animation-delay: 0.2s; }
+.additional-resources { animation-delay: 0.1s; }
+.main-content header { animation-delay: 0.3s; }
+#intro { animation-delay: 0.4s; }
+.findings-button { animation-delay: 0.5s; }
+
+@keyframes fadeIn {
+    to { 
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.03); }
+    100% { transform: scale(1); }
+}
+
+.main-content {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: #141618;
+    text-align: center;
+    height: 100vh;
+    padding: 0 20px;
+    z-index: 1;
+    position: relative;
 }
 
-.content {
-    text-align: center;
-    width: 80%;
+.main-content::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.6) 100%);
+    z-index: -1;
 }
 
 header h1 {
-    border-bottom: 2px dotted #ffffff;
+    border-bottom: 2px dotted var(--text-primary);
     display: inline-block;
     padding-bottom: 10px;
     font-size: 2.5rem;
-    margin-bottom: 20px;
-    color: #ffffff;
+    margin-bottom: 30px;
+    color: var(--text-primary);
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
 }
 
 #intro {
-    margin-bottom: 20px;
+    margin-bottom: 40px;
+    max-width: 600px;
 }
 
 #intro p {
     font-size: 1.2rem;
     line-height: 1.5;
-    color: #cccccc;
+    color: var(--text-secondary);
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
 }
 
-.buttons {
+.findings-button {
+    background-color: var(--accent-color);
+    color: var(--text-primary);
+    border: 1px solid var(--accent-color);
+    padding: 12px 30px;
+    cursor: pointer;
+    border-radius: 12px;
+    transition: all 0.3s var(--animation-curve);
+    font-size: 1.1rem;
+    font-family: serif;
+    text-transform: uppercase;
+    box-shadow: 0 0 0 2px #141618, 0 0 0 4px var(--accent-color);
+    animation: pulse 2s infinite 1.3s;
+    outline: none;
+    will-change: transform;
+}
+
+.findings-button:hover {
+    background-color: var(--accent-dark);
+    border-color: var(--text-primary);
+    box-shadow: 0 0 0 2px #141618, 0 0 0 4px var(--text-primary);
+    transform: translateY(-2px);
+}
+
+.findings-button:focus {
+    outline: 2px solid var(--text-primary);
+    outline-offset: 2px;
+}
+
+.additional-resources {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 2;
     display: flex;
-    justify-content: center;
-    gap: 20px;
+    flex-direction: column;
+    align-items: center;
+    will-change: transform, opacity;
 }
 
-.buttons button {
-    background-color: #141618;
-    color: #ffffff;
-    border: 1px solid #ffffff;
+.additional-resources h3 {
+    color: var(--text-primary);
+    font-size: 1rem;
+    font-weight: normal;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin: 0 0 10px 0;
+    padding: 0;
+    white-space: nowrap;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.resource-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+    align-items: center;
+}
+
+.resource-buttons button {
+    background-color: var(--accent-color);
+    color: var(--text-primary);
+    border: 1px solid var(--accent-color);
     padding: 10px 20px;
     cursor: pointer;
     border-radius: 12px;
-    transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+    transition: all 0.2s var(--animation-curve);
     font-size: 1rem;
     font-family: serif;
     text-transform: uppercase;
-    box-shadow: 0 0 0 2px #141618, 0 0 0 4px #ffffff;
+    box-shadow: 0 0 0 2px #141618, 0 0 0 4px var(--accent-color);
+    width: 100%;
+    min-width: 150px;
+    text-align: center;
+    outline: none;
+    will-change: transform;
 }
 
-.buttons button:hover {
-    background-color: #ffffff;
-    color: #0039a6;
-    box-shadow: 0 0 0 2px #ffffff, 0 0 0 4px #0039a6;
+.resource-buttons button:hover {
+    background-color: var(--accent-dark);
+    border-color: var(--text-primary);
+    box-shadow: 0 0 0 2px #141618, 0 0 0 4px var(--text-primary);
+    transform: translateY(-2px);
 }
 
-.right-half {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #141618;
-}
-
-.image-placeholder {
-    width: 35%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.image-placeholder img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 8px;
+.resource-buttons button:focus {
+    outline: 2px solid var(--text-primary);
+    outline-offset: 2px;
 }
 
 footer {
-    background-color: #101214;
-    color: #ffffff;
+    background-color: rgba(16, 18, 20, 0.8);
+    color: var(--text-primary);
     text-align: center;
     padding: 10px;
     position: fixed;
     bottom: 0;
     width: 100%;
+    z-index: 2;
+}
+
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 2rem;
+    }
+    
+    .additional-resources {
+        position: static;
+        margin: 20px auto;
+        align-items: center;
+    }
+    
+    .main-content {
+        padding-top: 80px;
+        justify-content: flex-start;
+    }
+    
+    .findings-button {
+        padding: 10px 20px;
+    }
 }
