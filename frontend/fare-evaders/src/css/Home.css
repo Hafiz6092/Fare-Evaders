@@ -166,7 +166,7 @@ header h1 {
     cursor: pointer;
     border-radius: 12px;
     transition: all 0.2s var(--animation-curve);
-    font-size: 1rem;
+    font-size: 0.9rem;
     font-family: serif;
     text-transform: uppercase;
     box-shadow: 0 0 0 2px #141618, 0 0 0 4px var(--accent-color);
