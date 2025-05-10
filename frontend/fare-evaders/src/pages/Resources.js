@@ -75,14 +75,83 @@ function Resources() {
 
       </ul>
 
-      <div className="mt-8">
-        <button
-          onClick={() => navigate("/alerts")}
-          className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-        >
-          View Subway Alerts
-        </button>
-      </div>
+        <div className="flex items-center justify-center mt-8">
+            <button
+                onClick={() => navigate("/alerts")}
+                className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+            >
+                View Subway Alerts
+            </button>
+        </div>
+
+      {/* FAQ Heading */}
+        <h2 className="text-2xl font-semibold text-white mt-12 mb-4 text-center">Frequently Asked Questions</h2>
+
+        {/* FAQ List */}
+        <div className="text-left text-gray-300 space-y-4 max-w-2xl mx-auto">
+
+        <details className="bg-gray-800 p-4 rounded-lg">
+            <summary className="cursor-pointer font-semibold text-white">
+            What do I do if my MetroCard doesn’t work?
+            </summary>
+            <p className="mt-2">
+            Visit a station agent or call 511. You can also file a claim for a damaged card on the MTA website under balance protection.
+            </p>
+        </details>
+
+        <details className="bg-gray-800 p-4 rounded-lg">
+            <summary className="cursor-pointer font-semibold text-white">
+            How do I check the balance on my MetroCard?
+            </summary>
+            <p className="mt-2">
+            You can check it at any MetroCard vending machine or by swiping at a station turnstile. OMNY users can check balance through their account online.
+            </p>
+        </details>
+
+        <details className="bg-gray-800 p-4 rounded-lg">
+            <summary className="cursor-pointer font-semibold text-white">
+            Where can I report a broken elevator or escalator?
+            </summary>
+            <p className="mt-2">
+            You can report accessibility issues through the{" "}
+            <a href="https://new.mta.info/customer-feedback" target="_blank" rel="noopener noreferrer" className="text-blue-400 underline">
+                MTA Feedback Form
+            </a>{" "}
+            or by calling 511.
+            </p>
+        </details>
+
+        <details className="bg-gray-800 p-4 rounded-lg">
+            <summary className="cursor-pointer font-semibold text-white">
+            Can I get a refund for an unused MetroCard?
+            </summary>
+            <p className="mt-2">
+            MetroCard refunds are limited. Unused cards with balances may qualify through a refund request. Call 511 or visit a service center.
+            </p>
+        </details>
+
+        <details className="bg-gray-800 p-4 rounded-lg">
+            <summary className="cursor-pointer font-semibold text-white">
+            Is there a way to request assistance if I have a disability?
+            </summary>
+            <p className="mt-2">
+            Yes, call 511 or use the{" "}
+            <a href="https://new.mta.info/accessibility" target="_blank" rel="noopener noreferrer" className="text-blue-400 underline">
+                Accessibility Services page
+            </a>{" "}
+            to learn about paratransit, elevator outages, and more.
+            </p>
+        </details>
+
+        </div>
+        <button 
+                onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} 
+                className="fixed bottom-6 right-6 bg-blue-600 text-white px-3 py-2 rounded-full shadow-lg hover:bg-blue-700"
+                >
+                ↑ Top
+            </button>
+
+
     </div>
   );
 }
