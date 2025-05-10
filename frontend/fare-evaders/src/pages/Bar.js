@@ -125,6 +125,13 @@ function Bar() {
                     </div>
                 </div>
             </div>
+            <button 
+                onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} 
+                className="fixed bottom-6 right-6 bg-blue-600 text-white px-3 py-2 rounded-full shadow-lg hover:bg-blue-700"
+                >
+                ↑ Top
+                </button>
+
         </div>
     );
 }
