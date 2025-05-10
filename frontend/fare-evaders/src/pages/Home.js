@@ -7,34 +7,33 @@ function Home() {
 
     return (
         <div className="home">
-            <div className="left-half">
-                <div className="content">
-                    <header>
-                        <h1>MTA Fare Evasion: Financial Strain</h1>
-                    </header>
+            <div className="additional-resources">
+                {/* <h3>Additional Resources</h3> */}
+                <div className="resource-buttons">
+                <button onClick={() => navigate('/resources')}>Additional Resources</button>
 
-                    <section id="intro">
-                        <p>MTA Fare Evasion exposes the financial strain on public transportation, impacting service quality and infrastructure maintenance.</p>
-                    </section>
-
-                    <div className="buttons">
-                        <button onClick={() => navigate('/alerts')}>Subway Alerts</button>
-                        <button onClick={() => navigate('/map')}>Map</button>
-                        <button onClick={() => navigate('/bar_graph')}>Bar Graphs</button>
-                        <button onClick={() => navigate('/info')}>MTA Help</button>
-                    </div>
+                    {/* <button onClick={() => navigate('/alerts')}>Alerts</button> */}
+                    {/* <button onClick={() => navigate('/map')}>Map</button> */}
+                    {/* <button onClick={() => navigate('/info')}>MTA Help</button> */}
                 </div>
             </div>
 
-            <div className="right-half">
-                {/* Placeholder for the image */}
-                <div className="image-placeholder">
-                    <img src="https://www.svgrepo.com/show/508699/landscape-placeholder.svg" alt="Placeholder" />
-                </div>
+            <div className="main-content">
+                <header>
+                    <h1>What's the deal with the MTA??</h1>
+                </header>
+
+                <section id="intro">
+                    <p>The MTA estimates a large portion of revenue is lost due to fare evasion which ultimately hurts the riders of NYC, but how strong is their claim?</p>
+                </section>
+
+                <button className="findings-button" onClick={() => navigate('/bar_graph')}>
+                    Our Findings
+                </button>
             </div>
 
             <footer>
-                <p> 2025 MTA Fare Evaders</p>
+                <p>© 2025 MTA Fare Evaders</p>
             </footer>
         </div>
     );
