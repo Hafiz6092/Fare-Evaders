@@ -1,5 +1,9 @@
 import React from "react";
 import { useNavigate } from "react-router-dom"; // assuming you are using react-router
+import { FaExclamationCircle, FaCreditCard, FaWheelchair } from "react-icons/fa";
+import { AiOutlineIssuesClose } from "react-icons/ai";
+import { IoAccessibility } from "react-icons/io5";
+
 
 function Resources() {
   const navigate = useNavigate();
@@ -18,52 +22,56 @@ function Resources() {
       <h2 className="text-2xl font-semibold text-gray-100 mt-6">Common Issues & Help</h2>
       <ul className="list-disc list-inside mt-2 text-gray-100">
       <div className="space-y-4 text-left inline-block text-gray-300">
-  <div>
-    <h3 className="font-semibold text-white">How to Report Service Issues</h3>
-    <p>
-      If you experience delays, disruptions, or unsafe conditions, you can report them directly to the MTA using their{" "}
-      <a
-        href="https://new.mta.info/customer-feedback"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="text-blue-400 underline"
-      >
-        Customer Feedback Form
-      </a>.
-    </p>
-  </div>
+        <div>
+            <h3 className="flex items-center gap-2 font-semibold text-white">
+                <FaExclamationCircle /> How to Report Service Issues
+             </h3>
+            <p>
+            If you experience delays, disruptions, or unsafe conditions, you can report them directly to the MTA using their{" "}
+            <a
+                href="https://new.mta.info/customer-feedback"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-blue-400 underline"
+            >
+                Customer Feedback Form
+            </a>.
+            </p>
+        </div>
 
-  <div>
-    <h3 className="font-semibold text-white">MetroCard and OMNY Payment Help</h3>
-    <p>
-      For issues related to fare payment, balance transfers, or lost MetroCards, visit the{" "}
-      <a
-        href="https://new.mta.info/fares"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="text-blue-400 underline"
-      >
-        Fares & Tolls section
-      </a>{" "}
-      of the MTA website.
-    </p>
-  </div>
+        <div>
+            <h3 className="flex items-center gap-2 font-semibold text-white"> <AiOutlineIssuesClose />MetroCard and OMNY Payment Help</h3>
+            <p>
+            For issues related to fare payment, balance transfers, or lost MetroCards, visit the{" "}
+            <a
+                href="https://new.mta.info/fares"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-blue-400 underline"
+            >
+                Fares & Tolls section
+            </a>{" "}
+            of the MTA website.
+            </p>
+        </div>
 
-  <div>
-    <h3 className="font-semibold text-white">Accessibility Services</h3>
-    <p>
-      MTA provides a range of services for riders with disabilities. Learn about elevator status, paratransit, and more on the{" "}
-      <a
-        href="https://new.mta.info/accessibility"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="text-blue-400 underline"
-      >
-        Accessibility page
-      </a>.
-    </p>
-  </div>
-</div>
+        <div>
+            <h3 className="flex items-center gap-2 font-semibold text-white"><IoAccessibility />Accessibility Services</h3>
+            <p>
+            MTA provides a range of services for riders with disabilities. Learn about elevator status, paratransit, and more on the{" "}
+            <a
+                href="https://new.mta.info/accessibility"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-blue-400 underline"
+            >
+                Accessibility page
+            </a>.
+            </p>
+            
+
+        </div>
+        </div>
 
       </ul>
 

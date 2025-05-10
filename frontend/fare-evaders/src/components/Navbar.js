@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import mtaLogo from "../assets/mta-logo.png"; // Make sure to save the logo in src/assets/
 
+
 function Navbar() {
   return (
     <nav className="bg-gray-950 text-white font-serif  p-4 flex items-center justify-between">
