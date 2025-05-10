@@ -8,11 +8,13 @@ function Home() {
     return (
         <div className="home">
             <div className="additional-resources">
-                <h3>Additional Resources</h3>
+                {/* <h3>Additional Resources</h3> */}
                 <div className="resource-buttons">
-                    <button onClick={() => navigate('/alerts')}>Alerts</button>
-                    <button onClick={() => navigate('/map')}>Map</button>
-                    <button onClick={() => navigate('/info')}>MTA Help</button>
+                <button onClick={() => navigate('/resources')}>Additional Resources</button>
+
+                    {/* <button onClick={() => navigate('/alerts')}>Alerts</button> */}
+                    {/* <button onClick={() => navigate('/map')}>Map</button> */}
+                    {/* <button onClick={() => navigate('/info')}>MTA Help</button> */}
                 </div>
             </div>
 
