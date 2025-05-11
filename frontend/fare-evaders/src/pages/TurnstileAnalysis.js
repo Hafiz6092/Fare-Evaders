@@ -187,9 +187,9 @@ function TurnstileAnalysis() {
                         <p>
                             We aggregated daily ridership data across various stations and dates to
                             create a picture of what a typical two week period might look like in terms
-                            of volume. From there we cross referenced those ridership estimates with
-                            the commonly cited figure of 170 million dollars in revenue every two
-                            weeks. That number seems to reflect average MTA earnings from fares in
+                            of volume. From there we cross referenced the ridership estimates dataset with publicly known figures.
+                            This helped us build a formula to  reflect average MTA Earnings from fares in a specific timeline That
+                            number seems to reflect average MTA earnings from fares in
                             that timeframe.
                         </p>
                         <p>
