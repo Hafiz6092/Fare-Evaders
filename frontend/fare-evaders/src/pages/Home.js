@@ -20,7 +20,7 @@ function Home() {
 
             <div className="main-content">
                 <header>
-                    <h1>What's the deal with the MTA??</h1>
+                    <h1>What's the deal with the MTA?</h1>
                 </header>
 
                 <section id="intro">

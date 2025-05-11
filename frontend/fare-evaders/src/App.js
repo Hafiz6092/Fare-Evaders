@@ -6,6 +6,7 @@ import MapPage from "./pages/MapPage";
 import InfoPage from "./pages/InfoPage";
 import Bar from "./pages/Bar";
 import Resources from "./pages/Resources";
+import TurnstileAnalysis from "./pages/TurnstileAnalysis";
 function App() {
     return (
         <Router>
@@ -28,6 +29,7 @@ function AppContent() {
                 <Route path="/bar_graph" element={<Bar />} />
                 {/* <Route path="/info" element={<InfoPage />} /> */}
                 <Route path="/resources" element={<Resources />} />
+                <Route path="/turnstile-analysis" element={<TurnstileAnalysis />} />
             </Routes>
         </>
     );

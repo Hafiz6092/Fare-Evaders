@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import BarGraph from "../components/BarGraph";
 import FareEvasion1 from "../assets/FareEvasion1.png";
 import FareEvasion2 from "../assets/FareEvasion2.png";
@@ -8,6 +9,7 @@ import TempImage from "../assets/temp-image.webp";
 function Bar() {
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
     const images = [FareEvasion1, FareEvasion2, FareEvasion3];
+    const navigate = useNavigate();
 
     const nextImage = () => {
         setCurrentImageIndex((prevIndex) => 
@@ -24,6 +26,7 @@ function Bar() {
     return (
         <div className="bg-gray-950 min-h-screen p-8">
             <div className="max-w-6xl mx-auto">
+
                 <div className="mb-8 p-6 bg-gray-900 rounded-lg">
                     <h2 className="text-white text-2xl font-bold mb-4">Our Claim</h2>
                     <p className="text-gray-300 mb-6">
@@ -44,6 +47,7 @@ function Bar() {
                         Source: MTA Blue Ribbon Panel Report
                     </a>
                 </div>
+
 
                 <div className="mb-8 relative">
                     <div className="relative h-96 bg-gray-800 rounded-lg overflow-hidden">
@@ -87,6 +91,7 @@ function Bar() {
                     </div>
                 </div>
 
+
                 <div className="mb-8 p-6 bg-gray-900 rounded-lg">
                     <h2 className="text-white text-2xl font-bold mb-4">Understanding the Data</h2>
                     <p className="text-gray-300 mb-4">
@@ -97,41 +102,23 @@ function Bar() {
                     </p>
                 </div>
 
+
                 <BarGraph />
 
-                <div className="mt-12 p-6 bg-gray-900 rounded-lg">
-                    <h2 className="text-white text-2xl font-bold mb-6">
-                        WE THEN TOOK A LOOK AT TURNSTILE DATA...
-                    </h2>
-                    
-                    <div className="mb-6 flex justify-center">
-                        <img 
-                            src={TempImage}
-                            alt="Turnstile data visualization placeholder"
-                            className="max-w-full h-auto rounded-lg"
-                        />
-                    </div>
-                    
-                    <div className="text-gray-300">
-                        <p className="mb-4 text-xl font-mono">
-                            Math on Turnstile data loss x cost of ridership x estimated ridership = -302030230 money
-                        </p>
-                        <p className="mb-4">
-                            We come to the conclusion - we draw an estimate that the MTA loses X amount of money compared to their initial claim of $285 million a year.
-                        </p>
-                        <p>
-                            Our claim is based on the public data we have... some datasets are not public...
-                        </p>
-                    </div>
+
+                <div className="mt-12 p-6 bg-gray-900 rounded-lg text-center">
+                    <h2 className="text-white text-2xl font-bold mb-6">We Then Take A Look At Turnstile Data</h2>
+                    <button
+                        onClick={() => navigate("/turnstile-analysis")}
+                        className="flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg transition-colors mx-auto hover:scale-105"
+                    >
+                        View Turnstile Analysis
+                        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                            <path fillRule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
+                        </svg>
+                    </button>
                 </div>
             </div>
-            <button 
-                onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} 
-                className="fixed bottom-6 right-6 bg-blue-600 text-white px-3 py-2 rounded-full shadow-lg hover:bg-blue-700"
-                >
-                ↑ Top
-            </button>
-
         </div>
     );
 }
